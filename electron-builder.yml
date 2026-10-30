@@ -1,0 +1,47 @@
+appId: dev.comet.launcher
+productName: Comet Launcher
+copyright: Copyright © 2026 ratchkinefilipe
+directories:
+  output: dist
+  buildResources: build
+files:
+  - out/**
+  - package.json
+artifactName: ${productName}-${version}-${os}-${arch}.${ext}
+
+win:
+  icon: build/icon.png
+  target:
+    - target: nsis
+      arch: [x64]
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: Comet Launcher
+  artifactName: ${productName}-Setup-${version}.${ext}
+
+linux:
+  icon: build/icon.png
+  category: Game
+  synopsis: Launcher de Minecraft (vanilla e modded)
+  description: Launcher de Minecraft com suporte a Forge, NeoForge, Fabric e Quilt, instâncias isoladas, Modrinth e CurseForge.
+  maintainer: Comet Launcher <filgamepro1234@users.noreply.github.com>
+  target:
+    - target: AppImage
+      arch: [x64]
+    - target: deb
+      arch: [x64]
+deb:
+  depends:
+    - libgtk-3-0
+    - libnotify4
+    - libnss3
+    - libxss1
+    - libxtst6
+    - xdg-utils
+    - libatspi2.0-0
+    - libuuid1
+    - libsecret-1-0
